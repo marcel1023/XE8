@@ -249,10 +249,6 @@
 
     const isLogin = localStorage.getItem("isLogin");
     const username = localStorage.getItem("username");
-
-    // redirect jika belum login
-    if (isLogin !== "true") {
-      window.location.href = "login.html";
     }
 
     renderAuth();
