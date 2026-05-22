@@ -6,19 +6,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function logout() {
         localStorage.removeItem("username");
+        localStorage.removeItem("isLogin");
         location.reload();
     }
 
     const user = localStorage.getItem("username");
 
-    if (user) {
-        document.getElementById("userInfo").innerText = "Halo, " + user;
+    const userInfo = document.getElementById("userInfo");
+    const authArea = document.getElementById("authArea");
+    if (userInfo) {
+        userInfo.innerText = user ? "Halo, " + user : "";
+    }
+    if (authArea) {
 
-        document.getElementById("authArea").innerHTML = `
-            <button onclick="logout()" class="nav-cta">Logout</button>
-        `;
+        if (user) {
+            authArea.innerHTML = `
+                <button onclick="logout()" class="nav-cta">Logout</button>
+            `;
+        } else {
+            authArea.innerHTML = `
+                <button onclick="goLogin()" class="nav-cta">Login</button>
+            `;
+        }
+
     }
 
+    // expose global
     window.goLogin = goLogin;
     window.logout = logout;
 
