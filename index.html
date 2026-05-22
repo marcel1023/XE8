@@ -56,37 +56,9 @@ https://templatemo.com/tm-580-woox-travel
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
-                <div id="authArea"></div>
-
-<script>
-  const authArea = document.getElementById("authArea");
-
-  // cek status login
-  const isLogin = localStorage.getItem("isLogin");
-
-  if (isLogin === "true") {
-    authArea.innerHTML = `
-      <button onclick="logout()" class="nav-cta">Logout</button>
-    `;
-  } else {
-    authArea.innerHTML = `
-      <button onclick="goLogin()" class="nav-cta">Login</button>
-    `;
-  }
-
-  function logout() {
-    localStorage.removeItem("isLogin");
-    localStorage.removeItem("username");
-
-    alert("Berhasil logout!");
-
-    window.location.href = "login.html";
-  }
-
-  function goLogin() {
-    window.location.href = "login.html";
-  }
-</script>
+                <div id="authArea">
+                  <button onclick="goLogin()" class="nav-cta">Login</button>
+                </div>
                     <ul class="nav">
                         <li><a href="index.html" class="active">Piena Computer</a></li>
                         <li><a href="about.html">Tentang</a></li>
