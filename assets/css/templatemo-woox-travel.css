@@ -2349,3 +2349,25 @@ body {
     padding: 0px;
   }
 }
+<style>
+  .auth-area {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  .nav-cta {
+    background: #22b3c1;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .nav-cta:hover {
+    background: #1a8d98;
+  }
+</style>
