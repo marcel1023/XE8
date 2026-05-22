@@ -1,13 +1,10 @@
-// login.js
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("✅ Script login.js loaded successfully");
+    console.log("✅ Script login.js loaded");
 
     const form = document.getElementById("loginForm");
-    
-    console.log("Form element:", form);  // untuk debugging
 
     if (!form) {
-        console.error("❌ Elemen #loginForm tidak ditemukan! Cek HTML kamu.");
+        console.error("❌ #loginForm tidak ditemukan");
         return;
     }
 
@@ -18,14 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById("password").value.trim();
 
         if (!username || !password) {
-            showAlert("Username dan password wajib diisi!");
+            showAlert("Username dan Password tidak boleh kosong!");
             return;
         }
 
         try {
             const res = await fetch("https://herisusanta.my.id/javalogin/api/auth.php", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
                 body: `action=login&username=\( {encodeURIComponent(username)}&password= \){encodeURIComponent(password)}`
             });
 
@@ -37,18 +36,20 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 showAlert("Username atau Password salah!");
             }
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
+            console.error(error);
             showAlert("Gagal koneksi ke server. Coba lagi.");
         }
     });
 
-    function showAlert(msg) {
+    function showAlert(message) {
         const alertBox = document.getElementById("alertBox");
         if (alertBox) {
-            alertBox.innerText = msg;
+            alertBox.innerText = message;
             alertBox.style.display = "block";
-            setTimeout(() => alertBox.style.display = "none", 3000);
+            setTimeout(() => {
+                alertBox.style.display = "none";
+            }, 3000);
         }
     }
 });
